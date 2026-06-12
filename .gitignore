@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+conda-env/
+*.egg-info/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Medical data - do not push real data
+data/**
+!data/**/
+!data/**/.gitkeep
+!data/**/README.md
+
+# Training outputs
+runs/**
+!runs/**/
+!runs/**/.gitkeep
+
+outputs/**
+!outputs/**/
+!outputs/**/.gitkeep
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Prediction / submission heavy files
+submission/**/*.nii
+submission/**/*.nii.gz
+submission/**/*.png
+submission/**/*.jpg
+submission/**/*.jpeg
+submission/**/*.bmp
+submission/**/*.tif
+submission/**/*.tiff
+
+# Keep folder structure
+!submission/**/
+!submission/**/.gitkeep
+!submission/**/*.json
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
