@@ -1,0 +1,27 @@
+# Core
+numpy
+scipy
+pandas
+tqdm
+pyyaml
+
+# Deep learning
+torch
+torchvision
+monai
+
+# Medical image I/O
+nibabel
+SimpleITK
+
+# Image processing / metrics
+scikit-image
+medpy
+
+# Visualization and notebooks
+matplotlib
+jupyter
+ipykernel
+
+# Utilities
+rich
