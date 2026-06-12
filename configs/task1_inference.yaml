@@ -1,0 +1,40 @@
+experiment:
+  name: task1_baseline_unet3d_inference
+  device: cuda
+
+checkpoint:
+  path: runs/task1_baseline/checkpoints/best_model.pt
+
+data:
+  images_dir: data/t1_ct/val/images
+
+model:
+  name: unet3d
+  in_channels: 1
+  out_channels: 2
+  model_size: base
+
+preprocessing:
+  intensity_min: -1000.0
+  intensity_max: 1000.0
+  intensity_out_min: 0.0
+  intensity_out_max: 1.0
+  enable_spacing_resample: false
+  target_spacing: [0.5, 0.5, 0.5]
+
+inference:
+  roi_size: [128, 128, 128]
+  sw_batch_size: 4
+  sliding_window_overlap: 0.25
+  use_amp: true
+
+postprocessing:
+  enabled: false
+  keep_largest_component: false
+  remove_small_objects: false
+  min_object_size: 100
+
+output:
+  prediction_dir: submission/t1_ct
+  output_json: submission/t1_ct/task1_predictions.json
+  prediction_suffix: "-pred.nii.gz"

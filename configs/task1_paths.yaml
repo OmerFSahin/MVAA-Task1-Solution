@@ -1,0 +1,26 @@
+project:
+  name: MVAA-Task1-Solution
+  root: .
+
+data:
+  task1_root: data/t1_ct
+
+  train_images_dir: data/t1_ct/train/images
+  train_labels_dir: data/t1_ct/train/labels
+  train_landmarks_dir: data/t1_ct/train/landmarks
+
+  unlabeled_images_dir: data/t1_ct/unlabeled/images
+
+  val_images_dir: data/t1_ct/val/images
+  val_labels_dir: data/t1_ct/val/labels
+  val_landmarks_dir: data/t1_ct/val/landmarks
+
+outputs:
+  runs_dir: runs
+  predictions_dir: outputs/predictions/task1
+  visualizations_dir: outputs/visualizations
+  error_analysis_dir: outputs/error_analysis
+
+submission:
+  task1_dir: submission/t1_ct
+  task1_json: submission/t1_ct/task1_predictions.json

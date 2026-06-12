@@ -1,0 +1,75 @@
+experiment:
+  name: task1_baseline_unet3d
+  output_dir: runs/task1_baseline
+  seed: 42
+  device: cuda
+
+data:
+  train_images_dir: data/t1_ct/train/images
+  train_labels_dir: data/t1_ct/train/labels
+  unlabeled_images_dir: data/t1_ct/unlabeled/images
+  val_images_dir: data/t1_ct/val/images
+  val_labels_dir: null
+
+model:
+  name: unet3d
+  in_channels: 1
+  out_channels: 2
+  model_size: base
+
+preprocessing:
+  intensity_min: -1000.0
+  intensity_max: 1000.0
+  intensity_out_min: 0.0
+  intensity_out_max: 1.0
+  enable_spacing_resample: false
+  target_spacing: [0.5, 0.5, 0.5]
+
+training:
+  epochs: 200
+  batch_size: 1
+  num_workers: 0
+  roi_size: [128, 128, 128]
+  train_crops_per_volume: 2
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  use_amp: true
+  grad_clip_norm: 12.0
+
+semi_supervised:
+  enabled: false
+  unsup_weight: 1.0
+  unsup_warmup_epochs: 40
+  unsup_rampup_epochs: 30
+  pseudo_threshold: 0.6
+  ema_decay: 0.99
+
+validation:
+  val_interval: 2
+  sw_batch_size: 4
+  sliding_window_overlap: 0.25
+
+checkpoint:
+  save_best: true
+  monitor_metric: dice
+  mode: max
+  save_last: true
+
+loss:
+  name: dice_ce
+  include_background: false
+  dice_weight: 1.0
+  ce_weight: 1.0
+
+  # For focal / tversky experiments
+  focal_weight: 1.0
+  focal_gamma: 2.0
+  alpha_fp: 0.3
+  beta_fn: 0.7
+  tversky_gamma: 1.3333333333
+
+  # For combined experiments
+  dice_ce_total_weight: 1.0
+  focal_tversky_weight: 0.5
+  hausdorff_weight: 0.1
+  hausdorff_alpha: 2.0
