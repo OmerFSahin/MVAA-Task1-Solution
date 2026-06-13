@@ -38,3 +38,19 @@ output:
   prediction_dir: submission/t1_ct
   output_json: submission/t1_ct/task1_predictions.json
   prediction_suffix: "-pred.nii.gz"
+
+postprocessing:
+  enabled: false
+  connectivity: 26
+
+  keep_largest_component: false
+  keep_top_k_components: null
+
+  remove_small_objects: false
+  min_object_size: 100
+  min_object_volume_mm3: null
+
+  fill_holes: false
+  opening_iterations: 0
+  closing_iterations: 0
+  keep_at_least_largest: true
